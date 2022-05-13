@@ -36,7 +36,7 @@ final_mapping = {
 }
 
 
-def gematria_loop(characters):
+def solve_loop(characters):
     """Calculate the gematria for a word using a loop"""
     result = 0
     for c in characters:
@@ -44,12 +44,12 @@ def gematria_loop(characters):
     return result
 
 
-def gematria(characters):
+def solve_comprehension(characters):
     """Calculate the gematria for a word using a comprehension"""
     return sum(mapping[c] for c in characters)
 
 
-def gematria_mispar_gadol(characters):
+def solve_mg(characters):
     """Calculate the gematria for a word using the dictionary get() method"""
     return sum(final_mapping.get(c, mapping[c]) if i == len(characters)-1 else mapping[c] for i, c in enumerate(characters))
 
@@ -59,14 +59,14 @@ satan = "he shin tet nun"
 alive = "het yod"
 benjamin = "bet nun yod mem yod nun"
 
-print("Standard encoding:")
-print(gematria(snake.split()))
-print(gematria(satan.split()))
-print(gematria(alive.split()))
-print(gematria(benjamin.split()))
+print("Standard encoding using solve_comprehension:")
+print(snake, "->", solve_comprehension(snake.split()))
+print(satan, "->", solve_comprehension(satan.split()))
+print(alive, "->", solve_comprehension(alive.split()))
+print(benjamin, "->", solve_comprehension(benjamin.split()))
 
-print("Mispar gadol encoding:")
-print(gematria_mispar_gadol(snake.split()))
-print(gematria_mispar_gadol(satan.split()))
-print(gematria_mispar_gadol(alive.split()))
-print(gematria_mispar_gadol(benjamin.split()))
+print("Mispar gadol encoding using solve_mg:")
+print(snake, "->", solve_mg(snake.split()))
+print(satan, "->", solve_mg(satan.split()))
+print(alive, "->", solve_mg(alive.split()))
+print(benjamin, "->", solve_mg(benjamin.split()))
